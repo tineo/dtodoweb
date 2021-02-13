@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuites>
-  <testsuite name="Project Test Suite" tests="1" assertions="1" errors="0" warnings="0" failures="0" skipped="0" time="0.014304">
-    <testsuite name="App\Tests\Util\CalculatorTest" file="/home/tineo/dtodoweb/tests/Util/CalculatorTest.php" tests="1" assertions="1" errors="0" warnings="0" failures="0" skipped="0" time="0.014304">
-      <testcase name="testAdd" class="App\Tests\Util\CalculatorTest" classname="App.Tests.Util.CalculatorTest" file="/home/tineo/dtodoweb/tests/Util/CalculatorTest.php" line="9" assertions="1" time="0.014304"/>
-    </testsuite>
-  </testsuite>
-</testsuites>
