@@ -20,7 +20,7 @@ jobs:
           configuration: phpunit.xml.dist
           memory_limit: 256M
           log_junit: tests/report/junit.xml
-          args: --coverage-text
+          args: --coverage-clover tests/report/coverage.xml
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
         #uses: monstar-lab-oss/sonarqube-github-action@v1.0.1
