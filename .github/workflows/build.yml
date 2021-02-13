@@ -23,7 +23,7 @@ jobs:
         id: test-coverage
         uses: johanvanhelden/gha-clover-test-coverage-check@v1
         with:
-          percentage: "0"
+          percentage: 0
           filename: "coverage.xml
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
