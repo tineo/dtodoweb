@@ -19,10 +19,11 @@ jobs:
         with:
           configuration: phpunit.xml.dist
           memory_limit: 256M
-          log_junit: junit-logfile.xml
+          log_junit: tests/report/junit.xml
+          args: --coverage-text
       - name: SonarCloud Scan
-        #uses: SonarSource/sonarcloud-github-action@master
-        uses: monstar-lab-oss/sonarqube-github-action@v1.0.1
+        uses: SonarSource/sonarcloud-github-action@master
+        #uses: monstar-lab-oss/sonarqube-github-action@v1.0.1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
