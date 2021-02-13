@@ -19,6 +19,7 @@ jobs:
         with:
           configuration: phpunit.xml
           memory_limit: 256M
+          log_junit: junit-logfile.xml
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
         env:
