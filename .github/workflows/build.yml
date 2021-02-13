@@ -37,7 +37,7 @@ jobs:
         run: composer install --prefer-dist
 
       - name: Execute tests
-        run: php bin/phpunit --bootstrap tests/bootstrap.php --configuration phpunit.xml.dist --coverage-clover coverage.xml --log-junit junit.xml
+        run: ./vendor/bin/simple-phpunit --bootstrap tests/bootstrap.php --configuration phpunit.xml.dist --coverage-clover coverage.xml --log-junit junit.xml
       - name: fix code coverage paths
         run: |
           sed -i 's/\/home\/runner\/work\/${{ github.event.repository.name }}\/${{ github.event.repository.name }}\//\/github\/workspace\//g' coverage.xml
