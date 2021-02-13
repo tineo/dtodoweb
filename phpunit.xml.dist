@@ -37,4 +37,8 @@
         <extension class="Symfony\Component\Panther\ServerExtension" />
     </extensions>
     -->
+
+    <logging>
+        <log type="coverage-clover" target="coverage.xml"/>
+    </logging>
 </phpunit>
