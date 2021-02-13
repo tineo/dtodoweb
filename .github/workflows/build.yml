@@ -37,7 +37,7 @@ jobs:
         run: composer install --prefer-dist
 
       - name: Execute tests
-        run: vendor/bin/phpunit --bootstrap tests/bootstrap.php --configuration phpunit.xml.dist --coverage-clover coverage.xml --log-junit junit.xml
+        run: vendor/bin/simple-phpunit --bootstrap tests/bootstrap.php --configuration phpunit.xml.dist --coverage-clover coverage.xml --log-junit junit.xml
 
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
