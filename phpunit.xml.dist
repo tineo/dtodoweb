@@ -28,7 +28,9 @@
                 <file>src/Kernel.php</file>
             </exclude>
         </whitelist>
+
     </filter>
+
 
     <listeners>
         <listener class="Symfony\Bridge\PhpUnit\SymfonyTestsListener" />
