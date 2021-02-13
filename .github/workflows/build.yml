@@ -17,11 +17,12 @@ jobs:
       - name: PHPUnit tests
         uses: php-actions/phpunit@v2
         with:
-          configuration: phpunit.xml
+          configuration: phpunit.xml.dist
           memory_limit: 256M
           log_junit: junit-logfile.xml
       - name: SonarCloud Scan
-        uses: SonarSource/sonarcloud-github-action@master
+        #uses: SonarSource/sonarcloud-github-action@master
+        uses: monstar-lab-oss/sonarqube-github-action@v1.0.1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
