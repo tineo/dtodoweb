@@ -40,10 +40,9 @@ jobs:
         run: php bin/phpunit --bootstrap tests/bootstrap.php --configuration phpunit.xml.dist --coverage-clover coverage.xml --log-junit junit.xml
       - name: fix code coverage paths
         run: |
-          sed -i 's/\/home\/runner\/work\/dtodoweb\/dtodoweb\//\/github\/workspace\//g' coverage.xml
+          sed -i 's/\/home\/runner\/work\/${{ github.event.repository.name }}\/${{ github.event.repository.name }}\//\/github\/workspace\//g' coverage.xml
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
-        #uses: monstar-lab-oss/sonarqube-github-action@v1.0.1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
