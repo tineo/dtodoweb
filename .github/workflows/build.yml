@@ -14,11 +14,6 @@ jobs:
         with:
           fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
 
-      - name: fix code coverage paths
-        working-directory: ./coverage
-        run: |
-          sed -i 's/\/home\/runner\/work\/dtodoweb\/dtodoweb\//\/github\/workspace\//g' lcov.info
-          sed -i 's/\/home\/runner\/work\/dtodoweb\/dtodoweb\//\/github\/workspace\//g' sonar-cloud-reporter.xml
 
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
