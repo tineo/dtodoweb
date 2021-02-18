@@ -38,7 +38,7 @@ jobs:
           tools: composer:v2
           coverage: pcov
       - name: Start mysql service
-          run: sudo /etc/init.d/mysql start
+        run: sudo /etc/init.d/mysql start
       - name: Get composer cache directory
         id: composer-cache
         run: echo "::set-output name=dir::$(composer config cache-files-dir)"
@@ -51,17 +51,17 @@ jobs:
           restore-keys: ${{ runner.os }}-composer-
 
       - name: Install Composer dependencies
-          run: |
-            composer require --dev symfony/orm-pack symfony/phpunit-bridge
-            composer install --no-progress --prefer-dist --optimize-autoloader
-            php bin/phpunit install
+        run: |
+          composer require --dev symfony/orm-pack symfony/phpunit-bridge
+          composer install --no-progress --prefer-dist --optimize-autoloader
+          php bin/phpunit install
 
       - name: Run Migration
-          run: |
-            php bin/console doctrine:schema:update --force || echo "No migrations found or schema update failed"
-            php bin/console doctrine:migrations:migrate || echo "No migrations found or migration failed"
-          env:
-            DATABASE_URL: mysql://root:symfony@127.0.0.1:${{ job.services.mysql.ports['3306'] }}/symfony
+        run: |
+          php bin/console doctrine:schema:update --force || echo "No migrations found or schema update failed"
+          php bin/console doctrine:migrations:migrate || echo "No migrations found or migration failed"
+        env:
+          DATABASE_URL: mysql://root:symfony@127.0.0.1:${{ job.services.mysql.ports['3306'] }}/symfony
       - name: Execute tests
         run: ./vendor/bin/simple-phpunit --bootstrap tests/bootstrap.php --configuration phpunit.xml.dist --coverage-clover coverage.xml --log-junit junit.xml
       - name: fix code coverage paths
