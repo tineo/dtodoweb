@@ -71,14 +71,14 @@ class RegistrationController extends AbstractController
     {
         $id = $request->get('id');
 
-        if (null === $id) {
+        if (null !== $id && ($user = $userRepository->find($id))) {
             return $this->redirectToRoute('app_register');
         }
 
-        $user = $userRepository->find($id);
-
-        if (null === $user) {
-            return $this->redirectToRoute('app_register');
+        if (!empty($user)) {
+            if (null === $user) {
+                return $this->redirectToRoute('app_register');
+            }
         }
 
         // validate email confirmation link, sets User::isVerified=true and persists
