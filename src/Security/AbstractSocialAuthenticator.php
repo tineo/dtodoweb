@@ -69,7 +69,7 @@ abstract class AbstractSocialAuthenticator extends SocialAuthenticator
 
         // 3) Maybe you just want to "register" them by creating
         // a User object
-        $user->setSocialId($socialUser->getId());
+        $this->setSocialIdUser($user, $this->getSocialId());
         $this->em->persist($user);
         $this->em->flush();
 
@@ -215,7 +215,6 @@ abstract class AbstractSocialAuthenticator extends SocialAuthenticator
         return $this;
     }
 
-
-
+    public abstract function setSocialIdUser(User $user, $socialId);
 
 }
