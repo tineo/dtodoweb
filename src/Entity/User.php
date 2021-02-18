@@ -30,7 +30,7 @@ class User implements UserInterface
      * @ORM\Column(type="json")
      */
     // guarantee every user at least has ROLE_USER
-    private $roles = ['ROLE_USER'];
+    private $roles;
 
     /**
      * @var string The hashed password
@@ -73,6 +73,11 @@ class User implements UserInterface
         $this->email = $email;
 
         return $this;
+    }
+
+    public function __construct()
+    {
+        $this->roles =  ['ROLE_USER'];
     }
 
     /**
