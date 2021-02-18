@@ -19,9 +19,9 @@ use Symfony\Component\Security\Core\User\UserProviderInterface;
 
 abstract class AbstractSocialAuthenticator extends SocialAuthenticator
 {
-    private $clientRegistry;
-    private $em;
-    private $router;
+    private ClientRegistry $clientRegistry;
+    private EntityManagerInterface $em;
+    private RouterInterface $router;
 
     public $key;
     public $socialId;
@@ -168,53 +168,7 @@ abstract class AbstractSocialAuthenticator extends SocialAuthenticator
     {
         return $this->clientRegistry;
     }
-
-    /**
-     * @param ClientRegistry $clientRegistry
-     * @return SocialAuthenticator
-     */
-    public function setClientRegistry(ClientRegistry $clientRegistry): SocialAuthenticator
-    {
-        $this->clientRegistry = $clientRegistry;
-        return $this;
-    }
-
-    /**
-     * @return EntityManagerInterface
-     */
-    public function getEm(): EntityManagerInterface
-    {
-        return $this->em;
-    }
-
-    /**
-     * @param EntityManagerInterface $em
-     * @return SocialAuthenticator
-     */
-    public function setEm(EntityManagerInterface $em): SocialAuthenticator
-    {
-        $this->em = $em;
-        return $this;
-    }
-
-    /**
-     * @return RouterInterface
-     */
-    public function getRouter(): RouterInterface
-    {
-        return $this->router;
-    }
-
-    /**
-     * @param RouterInterface $router
-     * @return SocialAuthenticator
-     */
-    public function setRouter(RouterInterface $router): SocialAuthenticator
-    {
-        $this->router = $router;
-        return $this;
-    }
-
+    
     public abstract function setSocialIdUser(User $user, $socialId);
 
 }
