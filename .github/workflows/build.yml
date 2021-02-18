@@ -62,6 +62,8 @@ jobs:
           DATABASE_URL: mysql://root:symfony@127.0.0.1:${{ job.services.mysql.ports['3306'] }}/symfony
       - name: Execute tests
         run: ./vendor/bin/simple-phpunit --bootstrap tests/bootstrap.php --configuration phpunit.xml.dist --coverage-clover coverage.xml --log-junit junit.xml
+        env:
+          DATABASE_URL: mysql://root:symfony@127.0.0.1:${{ job.services.mysql.ports['3306'] }}/symfony
       - name: fix code coverage paths
         run: |
           sed -i 's/\/home\/runner\/work\/${{ github.event.repository.name }}\/${{ github.event.repository.name }}\//\/github\/workspace\//g' coverage.xml
