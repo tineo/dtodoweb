@@ -2,11 +2,11 @@
 
 namespace App\Controller\Admin;
 
+use App\Entity\Ubigeo;
 use App\Entity\User;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
-use EasyCorp\Bundle\EasyAdminBundle\Router\AdminUrlGenerator;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -32,6 +32,8 @@ class DashboardController extends AbstractDashboardController
             //MenuItem::linkToDashboard('Dashboard', 'fa fa-home'),
             MenuItem::section('Usuarios'),
             MenuItem::linkToCrud('Users', 'fa fa-tags', User::class),
+            MenuItem::section('Ubigeo'),
+            MenuItem::linkToCrud('Ubigeo', 'fa fa-tags', Ubigeo::class),
 
         ];
     }

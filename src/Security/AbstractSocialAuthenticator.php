@@ -168,7 +168,7 @@ abstract class AbstractSocialAuthenticator extends SocialAuthenticator
     {
         return $this->clientRegistry;
     }
-    
+
     public abstract function setSocialIdUser(User $user, $socialId);
 
 }
