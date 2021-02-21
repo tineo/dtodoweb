@@ -47,16 +47,26 @@ class Image
      */
     private $size;
 
+    /**
+     * @return int|null
+     */
     public function getId(): ?int
     {
         return $this->id;
     }
 
+    /**
+     * @return User|null
+     */
     public function getUser(): ?User
     {
         return $this->user;
     }
 
+    /**
+     * @param User|null $user
+     * @return $this
+     */
     public function setUser(?User $user): self
     {
         $this->user = $user;
@@ -64,11 +74,18 @@ class Image
         return $this;
     }
 
+    /**
+     * @return string|null
+     */
     public function getAlt(): ?string
     {
         return $this->alt;
     }
 
+    /**
+     * @param string|null $alt
+     * @return $this
+     */
     public function setAlt(?string $alt): self
     {
         $this->alt = $alt;
@@ -76,11 +93,18 @@ class Image
         return $this;
     }
 
+    /**
+     * @return string|null
+     */
     public function getSrc(): ?string
     {
         return $this->src;
     }
 
+    /**
+     * @param string $src
+     * @return $this
+     */
     public function setSrc(string $src): self
     {
         $this->src = $src;
@@ -88,11 +112,18 @@ class Image
         return $this;
     }
 
+    /**
+     * @return int|null
+     */
     public function getWidth(): ?int
     {
         return $this->width;
     }
 
+    /**
+     * @param int $width
+     * @return $this
+     */
     public function setWidth(int $width): self
     {
         $this->width = $width;
@@ -100,11 +131,18 @@ class Image
         return $this;
     }
 
+    /**
+     * @return int|null
+     */
     public function getHeight(): ?int
     {
         return $this->height;
     }
 
+    /**
+     * @param int $height
+     * @return $this
+     */
     public function setHeight(int $height): self
     {
         $this->height = $height;
@@ -112,11 +150,18 @@ class Image
         return $this;
     }
 
+    /**
+     * @return float|null
+     */
     public function getSize(): ?float
     {
         return $this->size;
     }
 
+    /**
+     * @param float $size
+     * @return $this
+     */
     public function setSize(float $size): self
     {
         $this->size = $size;

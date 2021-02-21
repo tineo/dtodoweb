@@ -9,12 +9,18 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 
 class UbigeoCrudController extends AbstractCrudController
 {
+    /**
+     * @return string
+     */
     public static function getEntityFqcn(): string
     {
         return Ubigeo::class;
     }
 
 
+    /**
+     * @return RedirectResponse
+     */
     public function someMethod()
     {
 

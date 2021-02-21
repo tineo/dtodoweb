@@ -47,16 +47,26 @@ class Ubigeo
      */
     private ?float $lng;
 
+    /**
+     * @return int|null
+     */
     public function getId(): ?int
     {
         return $this->id;
     }
 
+    /**
+     * @return string|null
+     */
     public function getName(): ?string
     {
         return $this->name;
     }
 
+    /**
+     * @param string|null $name
+     * @return $this
+     */
     public function setName(?string $name): self
     {
         $this->name = $name;
@@ -64,11 +74,18 @@ class Ubigeo
         return $this;
     }
 
+    /**
+     * @return int|null
+     */
     public function getCode(): ?int
     {
         return $this->code;
     }
 
+    /**
+     * @param int|null $code
+     * @return $this
+     */
     public function setCode(?int $code): self
     {
         $this->code = $code;
@@ -76,11 +93,18 @@ class Ubigeo
         return $this;
     }
 
+    /**
+     * @return string|null
+     */
     public function getAbbreviation(): ?string
     {
         return $this->abbreviation;
     }
 
+    /**
+     * @param string|null $abbreviation
+     * @return $this
+     */
     public function setAbbreviation(?string $abbreviation): self
     {
         $this->abbreviation = $abbreviation;
@@ -88,11 +112,18 @@ class Ubigeo
         return $this;
     }
 
+    /**
+     * @return string|null
+     */
     public function getType(): ?string
     {
         return $this->type;
     }
 
+    /**
+     * @param string $type
+     * @return $this
+     */
     public function setType(string $type): self
     {
         $this->type = $type;
@@ -100,11 +131,18 @@ class Ubigeo
         return $this;
     }
 
+    /**
+     * @return float|null
+     */
     public function getLat(): ?float
     {
         return $this->lat;
     }
 
+    /**
+     * @param float $lat
+     * @return $this
+     */
     public function setLat(float $lat): self
     {
         $this->lat = $lat;
@@ -112,11 +150,18 @@ class Ubigeo
         return $this;
     }
 
+    /**
+     * @return float|null
+     */
     public function getLng(): ?float
     {
         return $this->lng;
     }
 
+    /**
+     * @param float $lng
+     * @return $this
+     */
     public function setLng(float $lng): self
     {
         $this->lng = $lng;

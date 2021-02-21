@@ -14,6 +14,10 @@ use Doctrine\Persistence\ManagerRegistry;
  */
 class UbigeoRepository extends ServiceEntityRepository
 {
+    /**
+     * UbigeoRepository constructor.
+     * @param ManagerRegistry $registry
+     */
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Ubigeo::class);

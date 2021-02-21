@@ -90,21 +90,34 @@ class Business
      */
     private $webUrl;
 
+    /**
+     * Business constructor.
+     */
     public function __construct()
     {
         $this->category = new ArrayCollection();
     }
 
+    /**
+     * @return int|null
+     */
     public function getId(): ?int
     {
         return $this->id;
     }
 
+    /**
+     * @return string|null
+     */
     public function getName(): ?string
     {
         return $this->name;
     }
 
+    /**
+     * @param string $name
+     * @return $this
+     */
     public function setName(string $name): self
     {
         $this->name = $name;
@@ -112,11 +125,18 @@ class Business
         return $this;
     }
 
+    /**
+     * @return string|null
+     */
     public function getAlias(): ?string
     {
         return $this->alias;
     }
 
+    /**
+     * @param string|null $alias
+     * @return $this
+     */
     public function setAlias(?string $alias): self
     {
         $this->alias = $alias;
@@ -124,11 +144,18 @@ class Business
         return $this;
     }
 
+    /**
+     * @return Image|null
+     */
     public function getLogo(): ?Image
     {
         return $this->logo;
     }
 
+    /**
+     * @param Image|null $logo
+     * @return $this
+     */
     public function setLogo(?Image $logo): self
     {
         $this->logo = $logo;
@@ -144,6 +171,10 @@ class Business
         return $this->category;
     }
 
+    /**
+     * @param Category $category
+     * @return $this
+     */
     public function addCategory(Category $category): self
     {
         if (!$this->category->contains($category)) {
@@ -153,6 +184,10 @@ class Business
         return $this;
     }
 
+    /**
+     * @param Category $category
+     * @return $this
+     */
     public function removeCategory(Category $category): self
     {
         $this->category->removeElement($category);
@@ -160,11 +195,18 @@ class Business
         return $this;
     }
 
+    /**
+     * @return Ubigeo|null
+     */
     public function getUbigeo(): ?Ubigeo
     {
         return $this->ubigeo;
     }
 
+    /**
+     * @param Ubigeo|null $ubigeo
+     * @return $this
+     */
     public function setUbigeo(?Ubigeo $ubigeo): self
     {
         $this->ubigeo = $ubigeo;
@@ -172,11 +214,18 @@ class Business
         return $this;
     }
 
+    /**
+     * @return string|null
+     */
     public function getAddress(): ?string
     {
         return $this->address;
     }
 
+    /**
+     * @param string $address
+     * @return $this
+     */
     public function setAddress(string $address): self
     {
         $this->address = $address;
@@ -184,11 +233,18 @@ class Business
         return $this;
     }
 
+    /**
+     * @return string|null
+     */
     public function getTel(): ?string
     {
         return $this->tel;
     }
 
+    /**
+     * @param string|null $tel
+     * @return $this
+     */
     public function setTel(?string $tel): self
     {
         $this->tel = $tel;
@@ -196,11 +252,18 @@ class Business
         return $this;
     }
 
+    /**
+     * @return string|null
+     */
     public function getDm(): ?string
     {
         return $this->dm;
     }
 
+    /**
+     * @param string|null $dm
+     * @return $this
+     */
     public function setDm(?string $dm): self
     {
         $this->dm = $dm;
@@ -208,11 +271,18 @@ class Business
         return $this;
     }
 
+    /**
+     * @return string|null
+     */
     public function getEmail(): ?string
     {
         return $this->email;
     }
 
+    /**
+     * @param string|null $email
+     * @return $this
+     */
     public function setEmail(?string $email): self
     {
         $this->email = $email;
@@ -220,11 +290,18 @@ class Business
         return $this;
     }
 
+    /**
+     * @return float|null
+     */
     public function getLat(): ?float
     {
         return $this->lat;
     }
 
+    /**
+     * @param float $lat
+     * @return $this
+     */
     public function setLat(float $lat): self
     {
         $this->lat = $lat;
@@ -232,11 +309,18 @@ class Business
         return $this;
     }
 
+    /**
+     * @return float|null
+     */
     public function getLng(): ?float
     {
         return $this->lng;
     }
 
+    /**
+     * @param float $lng
+     * @return $this
+     */
     public function setLng(float $lng): self
     {
         $this->lng = $lng;
@@ -244,11 +328,18 @@ class Business
         return $this;
     }
 
+    /**
+     * @return string|null
+     */
     public function getInformation(): ?string
     {
         return $this->information;
     }
 
+    /**
+     * @param string|null $information
+     * @return $this
+     */
     public function setInformation(?string $information): self
     {
         $this->information = $information;
@@ -256,11 +347,18 @@ class Business
         return $this;
     }
 
+    /**
+     * @return string|null
+     */
     public function getVideoUrl(): ?string
     {
         return $this->videoUrl;
     }
 
+    /**
+     * @param string|null $videoUrl
+     * @return $this
+     */
     public function setVideoUrl(?string $videoUrl): self
     {
         $this->videoUrl = $videoUrl;
@@ -268,11 +366,18 @@ class Business
         return $this;
     }
 
+    /**
+     * @return string|null
+     */
     public function getWebUrl(): ?string
     {
         return $this->webUrl;
     }
 
+    /**
+     * @param string|null $webUrl
+     * @return $this
+     */
     public function setWebUrl(?string $webUrl): self
     {
         $this->webUrl = $webUrl;

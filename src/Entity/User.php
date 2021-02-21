@@ -57,16 +57,26 @@ class User implements UserInterface
      */
     private $googleId;
 
+    /**
+     * @return int|null
+     */
     public function getId(): ?int
     {
         return $this->id;
     }
 
+    /**
+     * @return string|null
+     */
     public function getEmail(): ?string
     {
         return $this->email;
     }
 
+    /**
+     * @param string $email
+     * @return $this
+     */
     public function setEmail(string $email): self
     {
         $this->email = $email;
@@ -74,6 +84,9 @@ class User implements UserInterface
         return $this;
     }
 
+    /**
+     * User constructor.
+     */
     public function __construct()
     {
         $this->roles =  ['ROLE_USER'];
@@ -97,6 +110,10 @@ class User implements UserInterface
         return array_unique($this->roles);
     }
 
+    /**
+     * @param array $roles
+     * @return $this
+     */
     public function setRoles(array $roles): self
     {
         $this->roles = $roles;
@@ -112,6 +129,10 @@ class User implements UserInterface
         return (string) $this->password;
     }
 
+    /**
+     * @param string $password
+     * @return $this
+     */
     public function setPassword(string $password): self
     {
         $this->password = $password;
@@ -139,11 +160,18 @@ class User implements UserInterface
         // $this->plainPassword = null;
     }
 
+    /**
+     * @return bool
+     */
     public function isVerified(): bool
     {
         return $this->isVerified;
     }
 
+    /**
+     * @param bool $isVerified
+     * @return $this
+     */
     public function setIsVerified(bool $isVerified): self
     {
         $this->isVerified = $isVerified;
@@ -151,11 +179,18 @@ class User implements UserInterface
         return $this;
     }
 
+    /**
+     * @return mixed
+     */
     public function getApiToken()
     {
         return $this->apiToken;
     }
 
+    /**
+     * @param $apiToken
+     * @return $this
+     */
     public function setApiToken($apiToken): self
     {
         return $this->apiToken = $apiToken;

@@ -7,6 +7,7 @@ namespace App\Security;
 use App\Entity\User;
 use Doctrine\ORM\EntityManagerInterface;
 use KnpU\OAuth2ClientBundle\Client\ClientRegistry;
+use KnpU\OAuth2ClientBundle\Client\OAuth2ClientInterface;
 use KnpU\OAuth2ClientBundle\Client\Provider\SocialClient;
 use KnpU\OAuth2ClientBundle\Security\Authenticator\SocialAuthenticator;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -23,10 +24,16 @@ abstract class AbstractSocialAuthenticator extends SocialAuthenticator
     private EntityManagerInterface $em;
     private RouterInterface $router;
 
-    public $key;
-    public $socialId;
-    public $socialRoute;
+    public string $key;
+    public string $socialId;
+    public string $socialRoute;
 
+    /**
+     * AbstractSocialAuthenticator constructor.
+     * @param ClientRegistry $clientRegistry
+     * @param EntityManagerInterface $em
+     * @param RouterInterface $router
+     */
     public function __construct(ClientRegistry $clientRegistry, EntityManagerInterface $em, RouterInterface $router)
     {
         $this->clientRegistry = $clientRegistry;
@@ -34,16 +41,29 @@ abstract class AbstractSocialAuthenticator extends SocialAuthenticator
         $this->router = $router;
     }
 
+    /**
+     * @param Request $request
+     * @return bool
+     */
     public function supports(Request $request)
     {
         return $request->attributes->get('_route') === $this->getSocialRoute();
     }
 
+    /**
+     * @param Request $request
+     * @return \League\OAuth2\Client\Token\AccessToken|mixed
+     */
     public function getCredentials(Request $request)
     {
         return $this->fetchAccessToken($this->getSocialClient());
     }
 
+    /**
+     * @param mixed $credentials
+     * @param UserProviderInterface $userProvider
+     * @return User|object|\Symfony\Component\Security\Core\User\UserInterface|null
+     */
     public function getUser($credentials, UserProviderInterface $userProvider)
     {
         $socialUser = $this->getSocialClient()
@@ -76,20 +96,34 @@ abstract class AbstractSocialAuthenticator extends SocialAuthenticator
         return $user;
     }
 
-    public function getSocialClient()
+    /**
+     * @return \KnpU\OAuth2ClientBundle\Client\OAuth2ClientInterface
+     */
+    public function getSocialClient(): OAuth2ClientInterface
     {
         return $this->getClientRegistry()
             // the key used in config/packages/knpu_oauth2_client.yaml
             ->getClient($this->getKey());
     }
 
-    public function onAuthenticationSuccess(Request $request, TokenInterface $token, $providerKey)
+    /**
+     * @param Request $request
+     * @param TokenInterface $token
+     * @param string $providerKey
+     * @return RedirectResponse
+     */
+    public function onAuthenticationSuccess(Request $request, TokenInterface $token, $providerKey): RedirectResponse
     {
         $targetUrl = $this->router->generate('home');
         return new RedirectResponse($targetUrl);
     }
 
-    public function onAuthenticationFailure(Request $request, AuthenticationException $exception)
+    /**
+     * @param Request $request
+     * @param AuthenticationException $exception
+     * @return Response
+     */
+    public function onAuthenticationFailure(Request $request, AuthenticationException $exception): Response
     {
         $message = strtr($exception->getMessageKey(), $exception->getMessageData());
         return new Response($message, Response::HTTP_FORBIDDEN);
@@ -98,6 +132,9 @@ abstract class AbstractSocialAuthenticator extends SocialAuthenticator
     /**
      * Called when authentication is needed, but it's not sent.
      * This redirects to the 'login'.
+     * @param Request $request
+     * @param AuthenticationException|null $authException
+     * @return RedirectResponse
      */
     public function start(Request $request, AuthenticationException $authException = null)
     {
@@ -169,6 +206,11 @@ abstract class AbstractSocialAuthenticator extends SocialAuthenticator
         return $this->clientRegistry;
     }
 
+    /**
+     * @param User $user
+     * @param $socialId
+     * @return mixed
+     */
     public abstract function setSocialIdUser(User $user, $socialId);
 
 }

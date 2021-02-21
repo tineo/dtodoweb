@@ -35,22 +35,34 @@ class Category
     private $parentId;
 
 
-
+    /**
+     * Category constructor.
+     */
     public function __construct()
     {
         $this->places = new ArrayCollection();
     }
 
+    /**
+     * @return int|null
+     */
     public function getId(): ?int
     {
         return $this->id;
     }
 
+    /**
+     * @return string|null
+     */
     public function getName(): ?string
     {
         return $this->name;
     }
 
+    /**
+     * @param string $name
+     * @return $this
+     */
     public function setName(string $name): self
     {
         $this->name = $name;
@@ -58,11 +70,18 @@ class Category
         return $this;
     }
 
+    /**
+     * @return string|null
+     */
     public function getAlias(): ?string
     {
         return $this->alias;
     }
 
+    /**
+     * @param string $alias
+     * @return $this
+     */
     public function setAlias(string $alias): self
     {
         $this->alias = $alias;
@@ -70,11 +89,18 @@ class Category
         return $this;
     }
 
+    /**
+     * @return int|null
+     */
     public function getParentId(): ?int
     {
         return $this->parentId;
     }
 
+    /**
+     * @param int $parentId
+     * @return $this
+     */
     public function setParentId(int $parentId): self
     {
         $this->parentId = $parentId;

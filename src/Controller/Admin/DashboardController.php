@@ -20,12 +20,18 @@ class DashboardController extends AbstractDashboardController
         return $this->render('dashboard/dashboard.html.twig');
     }
 
+    /**
+     * @return Dashboard
+     */
     public function configureDashboard(): Dashboard
     {
         return Dashboard::new()
             ->setTitle('Dtodoaqui Dashboard');
     }
 
+    /**
+     * @return iterable
+     */
     public function configureMenuItems(): iterable
     {
         return [
