@@ -60,6 +60,11 @@ jobs:
           php bin/console doctrine:migrations:migrate || echo "No migrations found or migration failed"
         env:
           DATABASE_URL: mysql://root:symfony@127.0.0.1:${{ job.services.mysql.ports['3306'] }}/symfony
+      - name: Run Fixtures
+        run: |
+          php bin/console doctrine:fixtures:load --no-interaction|| echo "No fixtures found"
+        env:
+          DATABASE_URL: mysql://root:symfony@127.0.0.1:${{ job.services.mysql.ports['3306'] }}/symfony
       - name: Execute tests
         run: ./vendor/bin/simple-phpunit --bootstrap tests/bootstrap.php --configuration phpunit.xml.dist --coverage-clover coverage.xml --log-junit junit.xml
         env:
