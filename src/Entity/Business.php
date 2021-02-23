@@ -91,11 +91,23 @@ class Business
     private $webUrl;
 
     /**
+     * @ORM\OneToMany(targetEntity=Rating::class, mappedBy="business", orphanRemoval=true)
+     */
+    private $ratings;
+
+    /**
+     * @ORM\OneToMany(targetEntity=BusinessHours::class, mappedBy="business", orphanRemoval=true)
+     */
+    private $businessHours;
+
+    /**
      * Business constructor.
      */
     public function __construct()
     {
         $this->category = new ArrayCollection();
+        $this->ratings = new ArrayCollection();
+        $this->businessHours = new ArrayCollection();
     }
 
     /**
@@ -381,6 +393,66 @@ class Business
     public function setWebUrl(?string $webUrl): self
     {
         $this->webUrl = $webUrl;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Rating[]
+     */
+    public function getRatings(): Collection
+    {
+        return $this->ratings;
+    }
+
+    public function addRating(Rating $rating): self
+    {
+        if (!$this->ratings->contains($rating)) {
+            $this->ratings[] = $rating;
+            $rating->setBusiness($this);
+        }
+
+        return $this;
+    }
+
+    public function removeRating(Rating $rating): self
+    {
+        if ($this->ratings->removeElement($rating)) {
+            // set the owning side to null (unless already changed)
+            if ($rating->getBusiness() === $this) {
+                $rating->setBusiness(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|BusinessHours[]
+     */
+    public function getBusinessHours(): Collection
+    {
+        return $this->businessHours;
+    }
+
+    public function addBusinessHour(BusinessHours $businessHour): self
+    {
+        if (!$this->businessHours->contains($businessHour)) {
+            $this->businessHours[] = $businessHour;
+            $businessHour->setBusiness($this);
+        }
+
+        return $this;
+    }
+
+    public function removeBusinessHour(BusinessHours $businessHour): self
+    {
+        if ($this->businessHours->removeElement($businessHour)) {
+            // set the owning side to null (unless already changed)
+            if ($businessHour->getBusiness() === $this) {
+                $businessHour->setBusiness(null);
+            }
+        }
 
         return $this;
     }
