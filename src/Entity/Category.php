@@ -30,7 +30,12 @@ class Category
     private $alias;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="string", length=25)
+     */
+    private $icon;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
      */
     private $parentId;
 
@@ -90,18 +95,30 @@ class Category
     }
 
     /**
-     * @return int|null
+     * @return mixed
      */
+    public function getIcon()
+    {
+        return $this->icon;
+    }
+
+    /**
+     * @param mixed $icon
+     * @return Category
+     */
+    public function setIcon($icon)
+    {
+        $this->icon = $icon;
+        return $this;
+    }
+
+
     public function getParentId(): ?int
     {
         return $this->parentId;
     }
 
-    /**
-     * @param int $parentId
-     * @return $this
-     */
-    public function setParentId(int $parentId): self
+    public function setParentId(?int $parentId): self
     {
         $this->parentId = $parentId;
 

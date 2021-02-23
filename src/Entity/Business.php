@@ -6,6 +6,8 @@ use App\Repository\BusinessRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Mtarld\SymbokBundle\Annotation\Getter;
+use Mtarld\SymbokBundle\Annotation\Setter;
 
 /**
  * @ORM\Entity(repositoryClass=BusinessRepository::class)
@@ -16,16 +18,22 @@ class Business
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Getter
+     * @Setter
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Getter
+     * @Setter
      */
     private $name;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Getter
+     * @Setter
      */
     private $alias;
 
@@ -47,46 +55,64 @@ class Business
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Getter
+     * @Setter
      */
     private $address;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Getter
+     * @Setter
      */
     private $tel;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Getter
+     * @Setter
      */
     private $dm;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Getter
+     * @Setter
      */
     private $email;
 
     /**
      * @ORM\Column(type="float")
+     * @Getter
+     * @Setter
      */
     private $lat;
 
     /**
      * @ORM\Column(type="float")
+     * @Getter
+     * @Setter
      */
     private $lng;
 
     /**
      * @ORM\Column(type="text", nullable=true)
+     * @Getter
+     * @Setter
      */
     private $information;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Getter
+     * @Setter
      */
     private $videoUrl;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Getter
+     * @Setter
      */
     private $webUrl;
 
@@ -108,52 +134,6 @@ class Business
         $this->category = new ArrayCollection();
         $this->ratings = new ArrayCollection();
         $this->businessHours = new ArrayCollection();
-    }
-
-    /**
-     * @return int|null
-     */
-    public function getId(): ?int
-    {
-        return $this->id;
-    }
-
-    /**
-     * @return string|null
-     */
-    public function getName(): ?string
-    {
-        return $this->name;
-    }
-
-    /**
-     * @param string $name
-     * @return $this
-     */
-    public function setName(string $name): self
-    {
-        $this->name = $name;
-
-        return $this;
-    }
-
-    /**
-     * @return string|null
-     */
-    public function getAlias(): ?string
-    {
-        return $this->alias;
-    }
-
-    /**
-     * @param string|null $alias
-     * @return $this
-     */
-    public function setAlias(?string $alias): self
-    {
-        $this->alias = $alias;
-
-        return $this;
     }
 
     /**
@@ -207,195 +187,6 @@ class Business
         return $this;
     }
 
-    /**
-     * @return Ubigeo|null
-     */
-    public function getUbigeo(): ?Ubigeo
-    {
-        return $this->ubigeo;
-    }
-
-    /**
-     * @param Ubigeo|null $ubigeo
-     * @return $this
-     */
-    public function setUbigeo(?Ubigeo $ubigeo): self
-    {
-        $this->ubigeo = $ubigeo;
-
-        return $this;
-    }
-
-    /**
-     * @return string|null
-     */
-    public function getAddress(): ?string
-    {
-        return $this->address;
-    }
-
-    /**
-     * @param string $address
-     * @return $this
-     */
-    public function setAddress(string $address): self
-    {
-        $this->address = $address;
-
-        return $this;
-    }
-
-    /**
-     * @return string|null
-     */
-    public function getTel(): ?string
-    {
-        return $this->tel;
-    }
-
-    /**
-     * @param string|null $tel
-     * @return $this
-     */
-    public function setTel(?string $tel): self
-    {
-        $this->tel = $tel;
-
-        return $this;
-    }
-
-    /**
-     * @return string|null
-     */
-    public function getDm(): ?string
-    {
-        return $this->dm;
-    }
-
-    /**
-     * @param string|null $dm
-     * @return $this
-     */
-    public function setDm(?string $dm): self
-    {
-        $this->dm = $dm;
-
-        return $this;
-    }
-
-    /**
-     * @return string|null
-     */
-    public function getEmail(): ?string
-    {
-        return $this->email;
-    }
-
-    /**
-     * @param string|null $email
-     * @return $this
-     */
-    public function setEmail(?string $email): self
-    {
-        $this->email = $email;
-
-        return $this;
-    }
-
-    /**
-     * @return float|null
-     */
-    public function getLat(): ?float
-    {
-        return $this->lat;
-    }
-
-    /**
-     * @param float $lat
-     * @return $this
-     */
-    public function setLat(float $lat): self
-    {
-        $this->lat = $lat;
-
-        return $this;
-    }
-
-    /**
-     * @return float|null
-     */
-    public function getLng(): ?float
-    {
-        return $this->lng;
-    }
-
-    /**
-     * @param float $lng
-     * @return $this
-     */
-    public function setLng(float $lng): self
-    {
-        $this->lng = $lng;
-
-        return $this;
-    }
-
-    /**
-     * @return string|null
-     */
-    public function getInformation(): ?string
-    {
-        return $this->information;
-    }
-
-    /**
-     * @param string|null $information
-     * @return $this
-     */
-    public function setInformation(?string $information): self
-    {
-        $this->information = $information;
-
-        return $this;
-    }
-
-    /**
-     * @return string|null
-     */
-    public function getVideoUrl(): ?string
-    {
-        return $this->videoUrl;
-    }
-
-    /**
-     * @param string|null $videoUrl
-     * @return $this
-     */
-    public function setVideoUrl(?string $videoUrl): self
-    {
-        $this->videoUrl = $videoUrl;
-
-        return $this;
-    }
-
-    /**
-     * @return string|null
-     */
-    public function getWebUrl(): ?string
-    {
-        return $this->webUrl;
-    }
-
-    /**
-     * @param string|null $webUrl
-     * @return $this
-     */
-    public function setWebUrl(?string $webUrl): self
-    {
-        $this->webUrl = $webUrl;
-
-        return $this;
-    }
 
     /**
      * @return Collection|Rating[]
