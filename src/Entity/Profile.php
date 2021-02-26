@@ -4,6 +4,8 @@ namespace App\Entity;
 
 use App\Repository\ProfileRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Mtarld\SymbokBundle\Annotation\Getter;
+use Mtarld\SymbokBundle\Annotation\Setter;
 
 /**
  * @ORM\Entity(repositoryClass=ProfileRepository::class)

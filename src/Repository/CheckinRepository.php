@@ -5,6 +5,7 @@ namespace App\Repository;
 use App\Entity\Checkin;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * @method Checkin|null find($id, $lockMode = null, $lockVersion = null)
@@ -22,5 +23,9 @@ class CheckinRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Checkin::class);
     }
+    public function register(Checkin $checkin){
+        $this->_em->persist($checkin);
 
+
+    }
 }

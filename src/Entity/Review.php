@@ -4,6 +4,8 @@ namespace App\Entity;
 
 use App\Repository\ReviewRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Mtarld\SymbokBundle\Annotation\Getter;
+use Mtarld\SymbokBundle\Annotation\Setter;
 
 /**
  * @ORM\Entity(repositoryClass=ReviewRepository::class)

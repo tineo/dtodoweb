@@ -4,6 +4,8 @@ namespace App\Entity;
 
 use App\Repository\ImageRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Mtarld\SymbokBundle\Annotation\Getter;
+use Mtarld\SymbokBundle\Annotation\Setter;
 
 /**
  * @ORM\Entity(repositoryClass=ImageRepository::class)

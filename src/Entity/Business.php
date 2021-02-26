@@ -247,4 +247,20 @@ class Business
 
         return $this;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getUbigeo()
+    {
+        return $this->ubigeo;
+    }
+
+    /**
+     * @param mixed $ubigeo
+     */
+    public function setUbigeo($ubigeo): void
+    {
+        $this->ubigeo = $ubigeo;
+    }
 }
